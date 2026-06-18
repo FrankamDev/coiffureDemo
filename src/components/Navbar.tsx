@@ -23,7 +23,7 @@ export default function Navbar() {
     return (
         <nav className="fixed top-0 left-0 w-full h-20 px-6 md:px-12 flex items-center justify-between bg-white/90 dark:bg-stone-950/90 backdrop-blur-md border-b border-stone-100 dark:border-stone-900 transition-colors duration-300 z-50">
             
-            {/* Logo - Style Salon de Coiffure Premium */}
+          
             <div className="flex flex-col cursor-pointer">
                 <span className="text-2xl font-serif font-semibold tracking-wide text-stone-900 dark:text-stone-100 uppercase">
                     L'Atelier
@@ -33,7 +33,7 @@ export default function Navbar() {
                 </span>
             </div>
             
-            {/* Menu Central */}
+        
             <div className="hidden md:flex items-center">
                 <ul className="flex items-center gap-8 text-sm tracking-wider font-medium text-stone-600 dark:text-stone-400 uppercase">
                     {/* Lien Actif */}
