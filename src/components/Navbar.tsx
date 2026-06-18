@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
-
+import {motion} from 'framer-motion';
 export default function Navbar() {
+const navLinks = [
+        { id: 'accueil', name: 'Accueil', href: '#accueil' },
+        { id: 'prestations', name: 'Prestations', href: '#prestations' },
+        { id: 'galerie', name: 'Galerie', href: '#galerie' },
+        { id: 'salon', name: 'Le Salon', href: '/salon' },
+        { id: 'contact', name: 'Contact', href: '#contact' }
+    ];
+
+const [activeLink, setActiveLink] = useState('accueil');
     const [darkMode, setDarkMode] = useState(() => {
         if (typeof window !== 'undefined') {
             return localStorage.getItem('theme') === 'dark' || 
@@ -36,41 +45,56 @@ export default function Navbar() {
         
             <div className="hidden md:flex items-center">
                 <ul className="flex items-center gap-8 text-sm tracking-wider font-medium text-stone-600 dark:text-stone-400 uppercase">
-                    {/* Lien Actif */}
-                    <li className="cursor-pointer text-stone-900 dark:text-amber-400 font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1px] after:bg-amber-600">
-                        Accueil
-                    </li>
-                    <li className="cursor-pointer hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
-                        Prestations
-                    </li>
-                    <li className="cursor-pointer hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
-                        Galerie
-                    </li>
-                    <li className="cursor-pointer hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
-                        Le Salon
-                    </li>
-                    <li className="cursor-pointer hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
-                        Contact
-                    </li>
-                </ul>
+                {navLinks.map((link) => {
+                    const isActive = activeLink === link.id;
+                    
+                    return (
+                        <li 
+                            key={link.id} 
+                            onClick={() => setActiveLink(link.id)}
+                            className={`cursor-pointer transition-colors duration-300 relative py-1
+                                ${isActive 
+                                    ? 'text-stone-900 dark:text-amber-400 font-semibold' 
+                                    : 'hover:text-amber-600 dark:hover:text-amber-400 text-stone-600 dark:text-stone-400'
+                                }
+                            `}
+                        >
+                            <a href={link.href}>
+                                {link.name}
+                            </a>
+
+                            {/* Barre sous l'élément actif générée dynamiquement */}
+                            {isActive && (
+                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-amber-600 transition-all duration-300" />
+                            )}
+                        </li>
+                    );
+                })}
+            </ul>
             </div>
             
             {/* Actions (Thème + Bouton) */}
-            <div className="flex items-center gap-4">
-                {/* Bouton Dark Mode */}
-                <button 
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-stone-50 dark:bg-stone-900 text-lg border border-stone-200 dark:border-stone-800 transition-all active:scale-95 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-amber-400"
-                    aria-label="Changer de thème"
-                >
-                    {darkMode ? '☀️' : '🌙'}
-                </button>
-
-                {/* Bouton de Réservation */}
-                <button className="px-6 py-2.5 text-xs tracking-widest font-semibold uppercase text-white bg-stone-900 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-500 border border-transparent rounded-none shadow-sm transition-all duration-300 transform hover:-translate-y-0.5">
-                    Réserver
-                </button>
-            </div>
+            <div className="flex items-center gap-3">
+                        <span className="text-[10px] tracking-widest font-medium uppercase text-stone-400 dark:text-stone-500 select-none">
+                            {darkMode ? 'Mode Sombre' : 'Mode Clair'}
+                        </span>
+                      
+                        <button 
+                            onClick={() => setDarkMode(!darkMode)}
+                            className="relative w-14 h-7 bg-stone-200 dark:bg-stone-800 rounded-full p-1 transition-colors duration-300 focus:outline-none"
+                            aria-label="Interrupteur de thème"
+                        >
+                 
+                            <motion.div 
+                                className="w-5 h-5 rounded-full bg-white dark:bg-amber-400 shadow-md flex items-center justify-center text-[10px]"
+                                layout
+                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                animate={{ x: darkMode ? 28 : 0 }}
+                            >
+                                {darkMode ? '🌙' : '☀️'}
+                            </motion.div>
+                        </button>
+                    </div>
         </nav>
     );
 }
