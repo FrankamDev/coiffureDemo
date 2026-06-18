@@ -1,47 +1,54 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Clock, ShieldCheck } from 'lucide-react';
+import { useState } from 'react';
+import ServiceDetail from './ServiceDetail';
+import { Link, useNavigate } from 'react-router-dom';
+import servicesData from '../servicesData';
 
 export default function Services() {
-    const services = [
-        {
-            id: '01',
-            title: "Tresses Protectrices & Box Braids",
-            description: "Des divisions géométriques parfaites et une tension maîtrisée pour préserver la santé de votre cuir chevelu.",
-            price: "À partir de 5000 FCFA",
-            duration: "2h30 - 4h",
-            image: "../../public/women/1.jpg",
-            featured: true // Prendra plus de place dans la grille
-        },
-        {
-            id: '02',
-            title: "Cornrows & Nattes Collées",
-            description: "Des lignes épurées et des designs sur-mesure, du style minimaliste aux motifs les plus complexes.",
-            price: "À partir de 45€",
-            duration: "1h - 2h",
-            image: "https://images.unsplash.com/photo-1595959183075-c1d9451035aa?q=80&w=600&auto=format&fit=crop",
-            featured: false
-        },
-        {
-            id: '03',
-            title: "Fausses Locks & Twists",
-            description: "Un volume aérien et une texture naturelle premium pour un style bohème et sophistiqué.",
-            price: "À partir de 90€",
-            duration: "3h - 5h",
-            image: "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?q=80&w=600&auto=format&fit=crop",
-            featured: false
-        },
-        {
-            id: '03',
-            title: "Fausses Locks & Twists",
-            description: "Un volume aérien et une texture naturelle premium pour un style bohème et sophistiqué.",
-            price: "À partir de 90€",
-            duration: "3h - 5h",
-            image: "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?q=80&w=600&auto=format&fit=crop",
-            featured: false
-        }
-    ];
+    // const services = [
+    //     {
+    //         id: '1',
+    //         title: "Tresses Protectrices & Box Braids",
+    //         description: "Des divisions géométriques parfaites et une tension maîtrisée pour préserver la santé de votre cuir chevelu.",
+    //         price: "À partir de 25 000 FCFA",
+    //         duration: "2h30 - 4h",
+    //         image: "/women/1.jpg", // Note: En production/Vite, les assets publics se sourcent directement à la racine "/"
+    //         featured: true 
+    //     },
+    //     {
+    //         id: '2',
+    //         title: "Cornrows & Nattes Collées",
+    //         description: "Des lignes épurées et des designs sur-mesure, du style minimaliste aux motifs les plus complexes.",
+    //         price: "À partir de 15 000 FCFA",
+    //         duration: "1h - 2h",
+    //         image: "/men/11.jpg",
+    //         featured: false
+    //     },
+    //     {
+    //         id: '3',
+    //         title: "Fausses Locks & Twists",
+    //         description: "Un volume aérien et une texture naturelle premium pour un style bohème et sophistiqué.",
+    //         price: "À partir de 35 000 FCFA",
+    //         duration: "3h - 5h",
+    //         image: "/men/11.jpg",
+    //         featured: false
+    //     },
+    //     {
+    //         id: '4',
+    //         title: "Soin Profond & Traitement",
+    //         description: "Une cure d'hydratation intense et un massage du cuir chevelu pour stimuler activement la pousse.",
+    //         price: "À partir de 10 000 FCFA",
+    //         duration: "1h - 1h30",
+    //         image: "/men/11.jpg",
+    //         featured: false
+    //     }
+    // ];
+    const navigate = useNavigate();
 
-    // Animation d'apparition au défilement (Scroll)
+    
+    
+    const goToService = (id) => navigate(`/services/${id}`);
     const cardVariants = {
         hidden: { opacity: 0, y: 40 },
         visible: { 
@@ -53,7 +60,6 @@ export default function Services() {
 
     return (
         <section className="relative py-20 md:py-28 bg-white dark:bg-stone-950 transition-colors duration-500 overflow-hidden">
-            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
                 
                 {/* --- EN-TÊTE DE LA SECTION --- */}
@@ -76,15 +82,16 @@ export default function Services() {
 
                 {/* --- GRILLE ASYMÉTRIQUE DES SERVICES (Bento Grid) --- */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {services.map((service, index) => (
+                    {servicesData.map((service) => (
                         <motion.div
                             key={service.id}
+                            onClick={() => navigate(`/service/${service.id}`)}
                             variants={cardVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                             whileHover={{ y: -6 }}
-                            className={`group relative flex flex-col justify-between overflow-hidden border border-stone-100 dark:border-stone-900 bg-stone-50 dark:bg-stone-900/40 p-6 md:p-8 transition-all duration-300 ${
+                            className={`group relative flex flex-col justify-between overflow-hidden border border-stone-100 dark:border-stone-900 bg-stone-50 dark:bg-stone-900/40 p-6 md:p-8 transition-all duration-300 cursor-pointer ${
                                 service.featured ? 'lg:col-span-2' : 'lg:col-span-1'
                             }`}
                         >
@@ -120,7 +127,7 @@ export default function Services() {
                                 service.featured ? 'lg:mt-12' : 'mt-8'
                             }`}>
                                 <div className="flex items-center gap-4">
-                                    {/* Mini Vignette Photo Ronde ultra-propre */}
+                                    {/* Mini Vignette Photo Ronde */}
                                     <div className="w-14 h-14 rounded-full overflow-hidden border border-stone-200 dark:border-stone-800 shrink-0">
                                         <img 
                                             src={service.image} 
@@ -134,11 +141,15 @@ export default function Services() {
                                     </div>
                                 </div>
 
-                                {/* Bouton d'action fléché (Micro-interaction de luxe) */}
-                                <button className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-950 dark:bg-stone-800 text-white group-hover:bg-amber-600 dark:group-hover:bg-amber-600 text-xs font-semibold uppercase tracking-wider rounded-none transition-all duration-300">
-                                    Choisir
+                                {/* Bouton d'action fléché */}
+                                    
+
+                                <button  onClick={() => goToService(service.id)} className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-950 dark:bg-stone-800 text-white group-hover:bg-amber-600 dark:group-hover:bg-amber-600 text-xs font-semibold uppercase tracking-wider rounded-none transition-all duration-300">
+                                    Choisir 
                                     <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </button>
+                                  
+                                    
                             </div>
                         </motion.div>
                     ))}
@@ -148,3 +159,5 @@ export default function Services() {
         </section>
     );
 }
+
+
