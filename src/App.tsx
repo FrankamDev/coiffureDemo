@@ -8,6 +8,7 @@ import ServiceDetail from "./components/ServiceDetail"
 import FloatingChat from "./components/FloatingChat"
 import Prestations from "./components/Prestations"
 import PrestationsDetails from "./pages/PrestationsDetails"
+import GalleryDisplay from "./pages/GalleryDisplay"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
      <Route element={<Prestations/>} path="/prestations" />
      <Route path="/service/:id"  element={<ServiceDetail />} />
      <Route path="/prestations/:id"  element={<PrestationsDetails />} />
+     <Route path="/galleries"  element={<GalleryDisplay />} />
     </Routes>
     
     </BrowserRouter>

@@ -22,6 +22,7 @@ export default function Navbar() {
     { id: 'prestations', name: 'Prestations', href: '/prestations' },
     { id: 'galerie', name: 'Galerie', href: '/gallery' },
     { id: 'salon', name: 'Le Salon', href: '/salon' },
+    { id: 'galleryDisplay', name: 'Gallery', href: '/galleries' },
     { id: 'contact', name: 'Contact', href: '/contact' }
   ];
 
