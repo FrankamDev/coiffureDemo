@@ -1,7 +1,7 @@
 import Navbar from './Navbar'
 import Hero from './Hero'
 import Services from './Services'
-import GalleryExpertise from './GalleryExpertise'
+
 import Footer from './Footer'
 
 
@@ -11,7 +11,7 @@ const Home = () => {
       <Navbar/>
      <Hero/>
      <Services/>
-     {/* <GalleryExpertise/> */}
+   
      <Footer />
     </div>
   )

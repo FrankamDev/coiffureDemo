@@ -1,20 +1,28 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Award, Heart, Shield, Star, Phone } from 'lucide-react';
+import { ArrowLeft, Award, Shield, Star } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import prestationData from '../prestationData';
 
-
-
+// Interface pour corriger les erreurs TypeScript
+interface Service {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  price: string;
+  duration: string;
+  rating: number;
+  included?: string[];
+}
 
 export default function PrestationsDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-
-
-  const services = prestationData.find(s => s.id === Number(id));
+  const services = prestationData.find(s => s.id === Number(id)) as Service | undefined;
 
   if (!services) {
     return (
