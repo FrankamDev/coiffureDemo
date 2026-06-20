@@ -145,6 +145,7 @@ export default function Hero() {
                         transition={{ delay: 0.8 }}
                         className="absolute -left-2 sm:-left-6 bottom-10 p-2.5 bg-stone-950 dark:bg-amber-600 text-white shadow-lg rounded-none hidden sm:flex flex-col text-center min-w-[120px]"
                     >
+                        
                         <span className="text-[9px] tracking-widest uppercase font-light opacity-80">Prochain RDV</span>
                         <span className="text-xs font-bold font-serif">Demain 14:00</span>
                     </motion.div>
