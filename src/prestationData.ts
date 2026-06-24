@@ -38,7 +38,7 @@ const prestationData: Service[] = [
     description: "Twists doux et naturels pour un look élégant et facile d'entretien.",
     duration: "3h - 4h30",
     price: "7.000 FCFA",
-    image: "/women/2.jpg",
+    image: "/women/f13.jpg",
     rating: 4.7,
   },
   {
@@ -69,7 +69,7 @@ const prestationData: Service[] = [
     description: "Box Braids sans nœuds à la racine pour plus de confort.",
     duration: "5h - 7h",
     price: "15.000 FCFA",
-    image: "/women/4.jpg",
+    image: "/women/14.jpg",
     popular: true,
     rating: 4.9,
   },
@@ -80,7 +80,7 @@ const prestationData: Service[] = [
     description: "Twists légers et volumineux avec un rendu bohème chic.",
     duration: "4h - 5h30",
     price: "10.000 FCFA",
-    image: "/women/5.jpg",
+    image: "/women/15.jpg",
     rating: 4.8,
   },
   {
@@ -90,7 +90,7 @@ const prestationData: Service[] = [
     description: "Technique au crochet avec cheveux synthétiques ou naturels.",
     duration: "4h - 6h",
     price: "11.000 FCFA",
-    image: "/women/6.jpg",
+    image: "/women/16.jpg",
     rating: 4.7,
   },
   {
@@ -100,7 +100,7 @@ const prestationData: Service[] = [
     description: "Soin intensif avec protéines et hydratation profonde.",
     duration: "1h45",
     price: "9.000 FCFA",
-    image: "/women/7.jpg",
+    image: "/women/17.jpg",
     rating: 4.8,
   },
   {
@@ -110,7 +110,7 @@ const prestationData: Service[] = [
     description: "Pose de perruque lace frontale invisible avec personnalisation.",
     duration: "3h - 4h30",
     price: "12.000 FCFA",
-    image: "/women/8.jpg",
+    image: "/women/16.jpg",
     popular: true,
     rating: 4.9,
   },

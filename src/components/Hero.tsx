@@ -1,5 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
 import { Calendar, Sparkles, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
     // Animation d'entrée progressive
@@ -74,13 +75,13 @@ export default function Hero() {
                         variants={fadeInUp}
                         className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto"
                     >
-                        <button className="w-full sm:w-auto px-8 py-3.5 text-[11px] font-semibold tracking-widest uppercase text-white bg-stone-950 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-500 rounded-none transition-all duration-300 shadow-xl shadow-stone-950/10 dark:shadow-amber-600/10 flex items-center justify-center gap-3">
+                        <Link to="/rdv" className="w-full sm:w-auto px-8 py-3.5 text-[11px] font-semibold tracking-widest uppercase text-white bg-stone-950 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-500 rounded-none transition-all duration-300 shadow-xl shadow-stone-950/10 dark:shadow-amber-600/10 flex items-center justify-center gap-3">
                             <Calendar className="w-4 h-4" />
                             Réserver un rdv
-                        </button>
-                        <button className="w-full sm:w-auto px-8 py-3.5 text-[11px] font-semibold tracking-widest uppercase text-stone-900 dark:text-stone-200 border border-stone-200 dark:border-stone-800 hover:border-stone-950 dark:hover:border-amber-500 rounded-none transition-all duration-300">
+                        </Link>
+                        <Link to="prestations" className="w-full sm:w-auto px-8 py-3.5 text-[11px] font-semibold tracking-widest uppercase text-stone-900 dark:text-stone-200 border border-stone-200 dark:border-stone-800 hover:border-stone-950 dark:hover:border-amber-500 rounded-none transition-all duration-300">
                             Nos créations
-                        </button>
+                        </Link>
                     </motion.div>
 
                     <motion.div 

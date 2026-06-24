@@ -9,6 +9,9 @@ import FloatingChat from "./components/FloatingChat"
 import Prestations from "./components/Prestations"
 import PrestationsDetails from "./pages/PrestationsDetails"
 import GalleryDisplay from "./pages/GalleryDisplay"
+import { BookingSection } from "./pages/BookingSection"
+
+
 
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
      <Route element={<Prestations/>} path="/prestations" />
      <Route path="/service/:id"  element={<ServiceDetail />} />
      <Route path="/prestations/:id"  element={<PrestationsDetails />} />
+     <Route path="/rdv"  element={<BookingSection />} />
      <Route path="/galleries"  element={<GalleryDisplay />} />
     </Routes>
     
